@@ -25,6 +25,27 @@ public class Humain {
 		return argent;
 	}
 
+	public Humain[] getMémoire() {
+		return mémoire;
+	}
+	public void setMémoire(Humain[] mémoire) {
+		this.mémoire = mémoire;
+	}
+	public int getNbConnaissance() {
+		return nbConnaissance;
+	}
+	public void setNbConnaissance(int nbConnaissance) {
+		this.nbConnaissance = nbConnaissance;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public void setBoissonPref(String boissonPref) {
+		BoissonPref = boissonPref;
+	}
+	public void setArgent(int argent) {
+		this.argent = argent;
+	}
 	public void parler(String texte) {
 		System.out.println(this.nom+"- "+texte);
 	}
