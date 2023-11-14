@@ -1,7 +1,8 @@
 package personnage;
 
 public class Humain {
-
+	private Humain[] mémoire =new Humain[30]  ; 
+	private int nbConnaissance = 0 ; 
 	private String nom; 
 	private String BoissonPref;
 	private int argent; 	
@@ -50,9 +51,48 @@ public class Humain {
 		}
 	
 	}
+	
+	public void faireConnaissanceAvec(Humain humain) {
+		direBonjour();
+		memoriser(humain); 
+		humain.repondre(this);
+		
+	}
+	
+	
+	private void repondre(Humain humain) {
+		direBonjour();
+		memoriser(humain);
+		
+	}
+	public void listerConnaissance () {
+		System.out.println("Je connais beaucoup de monde dont : ");
+		for(int i = 0 ; i<nbConnaissance ; i++) {
+			System.out.println(mémoire[i].getNom()+ " ");
+		}
+	}
+	private void memoriser(Humain humain) {
+		if (nbConnaissance < 30 ) {
+			mémoire[nbConnaissance] = humain ; 
+			nbConnaissance ++ ; }
+		else {
+			mémoire[0] = null ; 
+			for(int i = 1 ; i<30 ; i++) {
+				mémoire[i-1] = mémoire[i] ; 
+			}
+			mémoire[nbConnaissance-1]= humain ;
+			}
+		
+		
+		
+	}
 	public static void main(String[] args) {
 		Humain poyo = new Humain("poyel", "9.6", -500); 
-		poyo.direBonjour();
+		Humain poyo2 = new Humain("poyel2", "9.6", -500);
+		Humain poyo3 = new Humain("mahmoud", "9.6", -500);
+		poyo.faireConnaissanceAvec(poyo3);
+		poyo.listerConnaissance();
+		poyo3.listerConnaissance();
 		poyo.boire();
 	}
 }
